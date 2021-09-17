@@ -66,4 +66,12 @@ public class MyController {
                 .header("Content-Disposition", "attachement; filename=\"test.gz\"")
                 .body(Files.readAllBytes(zipFilePath));
     }
+
+    void delete(Path path) {
+        try {
+            Files.deleteIfExists(path);
+        } catch (IOException ex) {
+            throw new UncheckedIOException(ex);
+        }
+    }
 }
